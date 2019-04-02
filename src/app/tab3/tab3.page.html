@@ -1,9 +1,46 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Region Info
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <h1>Current region:
+    <span *ngIf="region !== null">{{ region.identifier }}</span>
+    <span *ngIf="region === null">Unknown</span>
+  </h1>
+  <ion-grid *ngIf="region !== null">
+    <ion-row *ngFor="let entry of region | keyvalue">
+      <ion-col size="3">
+        <div>{{ entry.key }}</div>
+      </ion-col>
+      <ion-col>
+        <div>{{ entry.value }}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item>
+      <ion-label text-wrap>
+        Enable location + notifications?
+        <br>
+        <ion-text color="secondary">Note: enabling location services is required for timely notification alerts.</ion-text>
+      </ion-label>
+      <ion-toggle slot="end" checked="true"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Allow friends to see my location?
+      </ion-label>
+      <ion-toggle slot="end" checked="false"></ion-toggle>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>@triluna</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button size="large" expand="block">Add Friend</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

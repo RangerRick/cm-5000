@@ -9,8 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { BeaconService } from './core/beacon.service';
 import { HTTP } from '@ionic-native/http/ngx';
-import { IBeacon } from '@ionic-native/ibeacon/ngx';
+import { IBeacon } from '../3rdparty/ibeacon/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    BeaconService,
     HTTP,
     IBeacon,
     LocalNotifications,
